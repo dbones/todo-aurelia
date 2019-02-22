@@ -1,0 +1,35 @@
+<template>
+    
+  <require from="../resources/elements/moment-ago"></require>
+  <require from="./todo.css"></require>
+
+  <h3>What do you want to do next?</h3>
+
+    <md-input label="Todo item" value.bind="newItemContent"></md-input>
+    <button md-button click.delegate="addItem()">Add</button>
+
+
+    <h3>Todo (${items.length} item${items.length > 1 ? 's':''})</h3>
+
+      <md-card repeat.for="item of items">
+        <h5 class="${item.isComplete ? 'strike' : 'no-strike'}">
+          ${item.content} (<moment-ago value.bind="item.dateTime"></moment-ago>)
+        </h5>
+
+        <md-fab direction="left" class="actions">
+          <a md-button="floating: true; large: true;" md-tooltip="position: bottom; text: complete;"
+            md-waves="color: light;" click.delegate="completeItem(item)" >
+            <i class="large material-icons">check</i>
+          </a>
+          <ul>
+            <li><a md-button="floating: true;" md-tooltip="position: bottom; text: copy;" md-waves="color: light;"
+                class="blue" click.delegate="copyItem(item)"><i class="material-icons">file_copy</i></a></li>
+            <li><a md-button="floating: true;" md-tooltip="position: bottom; text: remove;" md-waves="color: light;"
+                class="red" click.delegate="deleteItem(item, $index)"><i class="material-icons">remove</i></a></li>
+          </ul>
+        </md-fab>
+
+
+      </md-card>
+
+</template>

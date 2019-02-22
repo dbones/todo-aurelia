@@ -1,0 +1,14 @@
+.strike {
+    text-decoration-line: line-through;
+}
+
+.no-strike {
+    text-decoration-line: none;
+}
+
+.actions {
+    position: absolute; 
+    display: inline-block; 
+    right: 24px; 
+    top: 10px;
+}
